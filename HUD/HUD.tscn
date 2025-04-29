@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq7tvml0v04vs"]
+
+[ext_resource type="Script" path="res://HUD/HUD.gd" id="1_66ywr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2agl"]
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_66ywr")
+
+[node name="PromptLabel" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.980066, 1)
+text = "Press [E] to kill"
+label_settings = SubResource("LabelSettings_h2agl")
+horizontal_alignment = 1
+
+[node name="cleanPromptLabel" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.980066, 1)
+text = "Hold [E] to clean"
+label_settings = SubResource("LabelSettings_h2agl")
+horizontal_alignment = 1

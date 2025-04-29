@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://co428jdyu2mg3"]
+[gd_scene load_steps=6 format=3 uid="uid://co428jdyu2mg3"]
 
-[ext_resource type="Script" uid="uid://gfkke2ggtwuw" path="res://npc/victim.gd" id="1_mhv1u"]
+[ext_resource type="Script" path="res://npc/victim.gd" id="1_mhv1u"]
 [ext_resource type="Texture2D" uid="uid://d3261c4uvmv37" path="res://icon.svg" id="2_l6x6m"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="3_c5ca0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtq0x"]
 size = Vector2(126, 210.5)
@@ -27,3 +28,9 @@ shape = SubResource("RectangleShape2D_wtq0x")
 shape = SubResource("CircleShape2D_l6x6m")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="VisionCone2D" parent="." instance=ExtResource("3_c5ca0")]
+position = Vector2(0, -12)
+rotation = 4.71239
+angle_deg = 65
+debug_shape = true

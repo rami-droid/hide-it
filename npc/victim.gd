@@ -51,3 +51,10 @@ func _process(_delta):
 
         State.FLEEING:
             pass
+
+func _on_vision_cone_area_body_exited(body: Node2D):
+    pass
+
+func _on_vision_cone_area_body_entered(body: Node2D):
+    if body.is_in_group("blood"):
+        state = State.ALERTED

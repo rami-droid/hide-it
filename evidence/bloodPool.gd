@@ -5,11 +5,11 @@ var clean_range = false
 var timer = 0
 
 func displayUI():
-	%killPromptLabel.text = "Press E to clean"
+	print(UIManager)
 	if clean_range:
-		%killPromptLabel.visible = true
+		UIManager.show_prompt("Press E to clean")
 	else:
-		%killPromptLabel.visible = false
+		UIManager.hide_prompt()
 
 
 
@@ -22,6 +22,12 @@ func clean():
 		queue_free()
 		
 
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		print("player enter")
+		clean_range = true
+		await get_tree().process_frame
+
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("player exit")
@@ -29,12 +35,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		timer = 0
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		print("player enter")
-		clean_range = true
-
 func _physics_process(_delta):
+	displayUI()
 	if Input.is_action_pressed("interact"):
 		
 		clean()

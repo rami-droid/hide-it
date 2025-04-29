@@ -7,7 +7,7 @@ var in_kill_range = false
 
 
 # Blood Splatter Effect (for top-down view)
-func spawn_blood_effect(position: Vector2):
+func spawn_blood_effect(_position: Vector2):
 	var direction = (get_global_mouse_position() - position).normalized()
 	var angle = direction.angle()
 	# Ensure the scene is preloaded properly as a PackedScene
@@ -27,11 +27,10 @@ func kill(victim):
 		nearby_victim = null
 
 func display_ui():
-	%killPromptLabel.text = "Press E to kill"
 	if nearby_victim:
-		%killPromptLabel.visible = true
+		UIManager.show_prompt("Press E to kill")
 	else:
-		%killPromptLabel.visible = false
+		UIManager.hide_prompt()
 
 func _physics_process(_delta):
 	display_ui()
@@ -41,7 +40,7 @@ func _physics_process(_delta):
 	velocity = input_dir * speed
 	move_and_slide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if nearby_victim and Input.is_action_just_pressed("interact"):
 		kill(nearby_victim)
 
