@@ -5,11 +5,12 @@ var clean_range = false
 var timer = 0
 
 func displayUI():
-	%killPromptLabel.text = "Press E to clean"
-	if clean_range:
-		%killPromptLabel.visible = true
-	else:
-		%killPromptLabel.visible = false
+	print(%killPromptLabel)
+	# $killPromptLabel.text = "Press E to clean"
+#	if clean_range:
+		#$killPromptLabel.visible = true
+#	else:
+		#$killPromptLabel.visible = false
 
 
 
@@ -24,6 +25,7 @@ func clean():
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		displayUI()
 		print("player exit")
 		clean_range = false
 		timer = 0
@@ -31,6 +33,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		displayUI()
 		print("player enter")
 		clean_range = true
 
