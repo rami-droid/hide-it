@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://co428jdyu2mg3"]
+
+[ext_resource type="Script" uid="uid://gfkke2ggtwuw" path="res://npc/victim.gd" id="1_mhv1u"]
+[ext_resource type="Texture2D" uid="uid://d3261c4uvmv37" path="res://icon.svg" id="2_l6x6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtq0x"]
+size = Vector2(126, 210.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l6x6m"]
+radius = 129.973
+
+[node name="Victim" type="CharacterBody2D"]
+script = ExtResource("1_mhv1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -21.5)
+scale = Vector2(1, 1.67969)
+texture = ExtResource("2_l6x6m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21.25)
+shape = SubResource("RectangleShape2D_wtq0x")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_l6x6m")
+
+[node name="Timer" type="Timer" parent="."]
