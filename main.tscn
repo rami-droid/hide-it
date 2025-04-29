@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://fcy0hcp3fjxn"]
+[gd_scene load_steps=5 format=3 uid="uid://fcy0hcp3fjxn"]
+
+[ext_resource type="Texture2D" uid="uid://d3261c4uvmv37" path="res://icon.svg" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dmvn25rnk1o2j" path="res://player/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://co428jdyu2mg3" path="res://npc/victim.tscn" id="3_h2yge"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5.49995, 97.25)
+scale = Vector2(8.89844, 4.01172)
+texture = ExtResource("1_0xm2m")
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(500, 0)
+
+[node name="Victim" parent="." groups=["victim"] instance=ExtResource("3_h2yge")]
+position = Vector2(-5.49995, 97.25)
+patrol_points = Array[Vector2]([Vector2(200, 35), Vector2(200, 300)])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="killPromptLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.980066, 1)
+text = "Press [E] to kill"
+label_settings = SubResource("LabelSettings_h2yge")
+horizontal_alignment = 1

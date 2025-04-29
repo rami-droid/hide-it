@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bir8jfxkx16vu"]
+
+[ext_resource type="Script" uid="uid://dd4llfr0uou23" path="res://evidence/bloodPool.gd" id="1_at4vf"]
+[ext_resource type="Texture2D" uid="uid://c1pkfgy6s7u7t" path="res://assets/blood_red.png" id="1_x7ali"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_at4vf"]
+radius = 40.1123
+
+[node name="BloodPool" type="RigidBody2D"]
+visibility_layer = 2
+gravity_scale = 0.0
+script = ExtResource("1_at4vf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.16, 2)
+texture = ExtResource("1_x7ali")
+region_enabled = true
+region_rect = Rect2(-0.349716, 58.8889, 33.7187, 42.0005)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_at4vf")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

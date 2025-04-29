@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmvn25rnk1o2j"]
+[gd_scene load_steps=5 format=3 uid="uid://dmvn25rnk1o2j"]
 
 [ext_resource type="Script" uid="uid://ckwr7b8v8iaxa" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://d3261c4uvmv37" path="res://icon.svg" id="2_g1dw6"]
@@ -6,7 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw30f"]
 size = Vector2(116.5, 116)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
+radius = 129.097
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rkbax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,3 +22,11 @@ texture = ExtResource("2_g1dw6")
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="killRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killRange"]
+shape = SubResource("CircleShape2D_rkbax")
+
+[connection signal="body_entered" from="killRange" to="." method="_on_kill_range_body_entered"]
+[connection signal="body_exited" from="killRange" to="." method="_on_kill_range_body_exited"]
