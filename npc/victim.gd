@@ -47,14 +47,17 @@ func _process(_delta):
             patrol_behavior(_delta)
         
         State.ALERTED:
-            pass
+            patrol_behavior(_delta)
+            print("alert")
 
         State.FLEEING:
             pass
 
-func _on_vision_cone_area_body_exited(body: Node2D):
+
+
+func _on_vision_cone_area_body_exited(body):
     pass
 
-func _on_vision_cone_area_body_entered(body: Node2D):
+func _on_vision_cone_area_body_entered(body:Node2D):
     if body.is_in_group("blood"):
         state = State.ALERTED

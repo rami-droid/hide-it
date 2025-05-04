@@ -34,3 +34,8 @@ position = Vector2(0, -12)
 rotation = 4.71239
 angle_deg = 65
 debug_shape = true
+
+[connection signal="body_entered" from="VisionCone2D/VisionConeArea" to="." method="_on_vision_cone_area_body_entered"]
+[connection signal="body_exited" from="VisionCone2D/VisionConeArea" to="." method="_on_vision_cone_area_body_exited"]
+
+[editable path="VisionCone2D"]
